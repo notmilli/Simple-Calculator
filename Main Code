@@ -1,0 +1,43 @@
+def add(n1, n2):
+  return n1 + n2
+
+def subtract(n1, n2):
+  return n1 - n2
+
+def multiply(n1, n2):
+  return n1 * n2 
+
+def divide(n1, n2):
+  return n1 / n2
+
+operations = {
+"+": add, 
+"-": subtract,
+"*": multiply,
+"/": divide,
+}
+
+def calculator():
+  num1 = int(input("What is the first number?" ))
+  end_task = False
+  while not end_task:
+    for symbol in operations:
+      print(symbol)
+
+    operation_symbol = input("Pick an operation. ")
+    
+    num2 = int(input("What is your next number?" ))
+    
+    calculation_function = operations[operation_symbol]
+    answer = calculation_function(num1, num2)
+    
+    print(f" {num1} {operation_symbol} {num2} = {answer}")
+  
+    if input("Do you want to continue with your previous answer? 'y' for yes and 'n' for no to continue and start a new calculation. ") == "y":
+      num1 = answer
+  
+    else:
+      end_task = True
+      calculator()
+  
+  calculator()
